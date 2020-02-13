@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>技术之美 on Jane - A super concise theme for Hugo</title>
+    <title>技术之美 on Gorden is chasing.</title>
     <link>http://localhost:1313/categories/%E6%8A%80%E6%9C%AF%E4%B9%8B%E7%BE%8E/</link>
-    <description>Recent content in 技术之美 on Jane - A super concise theme for Hugo</description>
+    <description>Recent content in 技术之美 on Gorden is chasing.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Thu, 20 Jul 2017 00:00:00 +0000</lastBuildDate>
@@ -17,7 +17,7 @@
       <pubDate>Thu, 20 Jul 2017 00:00:00 +0000</pubDate>
       
       <guid>http://localhost:1313/post/2017-07-20-%E5%86%8D%E8%AF%86fragment/</guid>
-      <description>以前就已经接触过好几次Fragment了，但是脑海中的Fragment妹子还是“犹抱琵琶半遮面”的样子，现在让我好好的看看她~ Fragmen</description>
+      <description>以前就已经接触过好几次Fragment了，但是脑海中的Fragment妹子还是“犹抱琵琶半遮面”的样子，现在让我好好的看看她~</description>
     </item>
     
     <item>

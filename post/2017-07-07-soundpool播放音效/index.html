@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>SoundPool播放音效 - Jane - A super concise theme for Hugo</title>
+  <title>SoundPool播放音效 - Gorden is chasing.</title>
   
 
 <meta name="renderer" content="webkit" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Gordenyou" />
   <meta name="description" content="实现Android App 的简单音效 如果应用程序经常播放密集、急促而又短暂的音效(如游戏音效)那么使用Media Player显得有些不太适合了。因" />
 
-  <meta name="keywords" content="Hugo, theme, jane" />
+  <meta name="keywords" content="Gordenyou, Android, jane" />
 
 
 
@@ -69,7 +69,7 @@
 <meta itemprop="description" content="实现Android App 的简单音效 如果应用程序经常播放密集、急促而又短暂的音效(如游戏音效)那么使用Media Player显得有些不太适合了。因">
 <meta itemprop="datePublished" content="2017-07-07T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2017-07-07T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="1228">
+<meta itemprop="wordCount" content="1274">
 
 
 
@@ -300,7 +300,7 @@
     
     
 <div class="post-toc" id="post-toc">
-  <h2 class="post-toc-title">Table of Contents</h2>
+  <h2 class="post-toc-title">文章目录</h2>
   <div class="post-toc-content">
     <nav id="TableOfContents">
   <ul>
@@ -325,8 +325,15 @@
 <li>不支持多个音频同时播放。</li>
 </ol>
 <p>但是，Android中除了Media Player播放音频之外还提供了Sound Pool来播放音效，Sound Pool使用音效池的概念来管理多个短促的音效，例如他可以开始就加载20个音效，以后再程序中按音效的ID进行播放。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">SoundPool soundpool <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> SoundPool<span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> maxStreams<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> streamType<span style="color:#f92672">,</span><span style="color:#66d9ef">int</span> srcQuality<span style="color:#f92672">)</span>
-</code></pre></div><table>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">SoundPool</span> <span class="n">soundpool</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SoundPool</span><span class="o">(</span><span class="kt">int</span> <span class="n">maxStreams</span><span class="o">,</span> <span class="kt">int</span> <span class="n">streamType</span><span class="o">,</span><span class="kt">int</span> <span class="n">srcQuality</span><span class="o">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><table>
 <thead>
 <tr>
 <th>参数</th>
@@ -356,8 +363,15 @@
 <li>int load(String path, int priority)：从path 对应的文件去加载声音。</li>
 </ol>
 <p>加载完之后，我们开始播放音乐，播放音乐的方法：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">play</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> soundID<span style="color:#f92672">,</span> <span style="color:#66d9ef">float</span> leftVolume<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> rightVolume<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> Priority<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> loop<span style="color:#f92672">,</span> <span style="color:#66d9ef">float</span> rate<span style="color:#f92672">)</span>
-</code></pre></div><table>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kt">int</span> <span class="nf">play</span><span class="o">(</span><span class="kt">int</span> <span class="n">soundID</span><span class="o">,</span> <span class="kt">float</span> <span class="n">leftVolume</span><span class="o">,</span> <span class="kt">int</span> <span class="n">rightVolume</span><span class="o">,</span> <span class="kt">int</span> <span class="n">Priority</span><span class="o">,</span> <span class="kt">int</span> <span class="n">loop</span><span class="o">,</span> <span class="kt">float</span> <span class="n">rate</span><span class="o">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><table>
 <thead>
 <tr>
 <th>参数</th>
@@ -394,51 +408,101 @@
 <li>调用SoundPool对象的load()方法从指定资源、文件中加载声音。最好使用HashMap&lt;Integer, Integer&gt;来管理所加载的声音。</li>
 <li>调用Sound Pool的play方法播放音效。</li>
 </ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SoundPoolDeme</span> <span style="color:#66d9ef">extends</span> Activity<span style="color:#f92672">{</span>
-  Button btn1<span style="color:#f92672">,</span>btn2<span style="color:#f92672">,</span>btn3<span style="color:#f92672">;</span>
-  <span style="color:#75715e">//创建一个SoundPool对象
-</span><span style="color:#75715e"></span>    SoundPool soundPool<span style="color:#f92672">;</span>
-    <span style="color:#75715e">//定义一个HashMap用于存放音频流的ID
-</span><span style="color:#75715e"></span>    HashMap<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">,</span> Integer<span style="color:#f92672">&gt;</span>musicId<span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> HashMap<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">,</span> Integer<span style="color:#f92672">&gt;</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
-    <span style="color:#a6e22e">@Override</span>
-    <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onCreate</span><span style="color:#f92672">(</span>Bundle savedInstanceState<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-       <span style="color:#66d9ef">super</span><span style="color:#f92672">.</span><span style="color:#a6e22e">onCreate</span><span style="color:#f92672">(</span>savedInstanceState<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
-       setContentView<span style="color:#f92672">(</span>R<span style="color:#f92672">.</span><span style="color:#a6e22e">layout</span><span style="color:#f92672">.</span><span style="color:#a6e22e">mian</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
-       btn1<span style="color:#f92672">=</span><span style="color:#f92672">(</span>Button<span style="color:#f92672">)</span>findViewById<span style="color:#f92672">(</span>R<span style="color:#f92672">.</span><span style="color:#a6e22e">id</span><span style="color:#f92672">.</span><span style="color:#a6e22e">btn1</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
-       btn2<span style="color:#f92672">=</span><span style="color:#f92672">(</span>Button<span style="color:#f92672">)</span>findViewById<span style="color:#f92672">(</span>R<span style="color:#f92672">.</span><span style="color:#a6e22e">id</span><span style="color:#f92672">.</span><span style="color:#a6e22e">btn2</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
-       btn3<span style="color:#f92672">=</span><span style="color:#f92672">(</span>Button<span style="color:#f92672">)</span>findViewById<span style="color:#f92672">(</span>R<span style="color:#f92672">.</span><span style="color:#a6e22e">id</span><span style="color:#f92672">.</span><span style="color:#a6e22e">btn3</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
-       <span style="color:#75715e">//初始化soundPool,设置可容纳12个音频流，音频流的质量为5，
-</span><span style="color:#75715e"></span>       soundPool<span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> SoundPool<span style="color:#f92672">(</span>12<span style="color:#f92672">,</span> 0<span style="color:#f92672">,</span>5<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
-       <span style="color:#75715e">//通过load方法加载指定音频流，并将返回的音频ID放入musicId中
-</span><span style="color:#75715e"></span>       musicId<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>1<span style="color:#f92672">,</span> soundPool<span style="color:#f92672">.</span><span style="color:#a6e22e">load</span><span style="color:#f92672">(</span><span style="color:#66d9ef">this</span><span style="color:#f92672">,</span> R<span style="color:#f92672">.</span><span style="color:#a6e22e">raw</span><span style="color:#f92672">.</span><span style="color:#a6e22e">awooga</span><span style="color:#f92672">,</span> 1<span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
-       musicId<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>2<span style="color:#f92672">,</span> soundPool<span style="color:#f92672">.</span><span style="color:#a6e22e">load</span><span style="color:#f92672">(</span><span style="color:#66d9ef">this</span><span style="color:#f92672">,</span> R<span style="color:#f92672">.</span><span style="color:#a6e22e">raw</span><span style="color:#f92672">.</span><span style="color:#a6e22e">evillaugh</span><span style="color:#f92672">,</span> 1<span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
-       musicId<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>3<span style="color:#f92672">,</span> soundPool<span style="color:#f92672">.</span><span style="color:#a6e22e">load</span><span style="color:#f92672">(</span><span style="color:#66d9ef">this</span><span style="color:#f92672">,</span> R<span style="color:#f92672">.</span><span style="color:#a6e22e">raw</span><span style="color:#f92672">.</span><span style="color:#a6e22e">jackinthebox</span><span style="color:#f92672">,</span> 1<span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
-       OnClickListener listener<span style="color:#f92672">=</span><span style="color:#66d9ef">new</span> OnClickListener<span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>       
-           <span style="color:#a6e22e">@Override</span>
-           <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onClick</span><span style="color:#f92672">(</span>View v<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-              <span style="color:#75715e">// TODO Auto-generated method stub
-</span><span style="color:#75715e"></span>              <span style="color:#66d9ef">switch</span> <span style="color:#f92672">(</span>v<span style="color:#f92672">.</span><span style="color:#a6e22e">getId</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-              <span style="color:#66d9ef">case</span> R<span style="color:#f92672">.</span><span style="color:#a6e22e">id</span><span style="color:#f92672">.</span><span style="color:#a6e22e">btn1</span><span style="color:#f92672">:</span>
-                  <span style="color:#75715e">//播放指定的音频流
-</span><span style="color:#75715e"></span>                  soundPool<span style="color:#f92672">.</span><span style="color:#a6e22e">play</span><span style="color:#f92672">(</span>musicId<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>1<span style="color:#f92672">)</span><span style="color:#f92672">,</span>1<span style="color:#f92672">,</span>1<span style="color:#f92672">,</span> 0<span style="color:#f92672">,</span> 0<span style="color:#f92672">,</span> 1<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
-                  <span style="color:#66d9ef">break</span><span style="color:#f92672">;</span>
-              <span style="color:#66d9ef">case</span> R<span style="color:#f92672">.</span><span style="color:#a6e22e">id</span><span style="color:#f92672">.</span><span style="color:#a6e22e">btn2</span><span style="color:#f92672">:</span>
-                  soundPool<span style="color:#f92672">.</span><span style="color:#a6e22e">play</span><span style="color:#f92672">(</span>musicId<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>2<span style="color:#f92672">)</span><span style="color:#f92672">,</span>1<span style="color:#f92672">,</span>1<span style="color:#f92672">,</span> 0<span style="color:#f92672">,</span> 0<span style="color:#f92672">,</span> 1<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
-                  <span style="color:#66d9ef">break</span><span style="color:#f92672">;</span>
-              <span style="color:#66d9ef">case</span> R<span style="color:#f92672">.</span><span style="color:#a6e22e">id</span><span style="color:#f92672">.</span><span style="color:#a6e22e">btn3</span><span style="color:#f92672">:</span>
-                  soundPool<span style="color:#f92672">.</span><span style="color:#a6e22e">play</span><span style="color:#f92672">(</span>musicId<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span>3<span style="color:#f92672">)</span><span style="color:#f92672">,</span>1<span style="color:#f92672">,</span>1<span style="color:#f92672">,</span> 0<span style="color:#f92672">,</span> 0<span style="color:#f92672">,</span> 1<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
-                  <span style="color:#66d9ef">break</span><span style="color:#f92672">;</span>
-              <span style="color:#66d9ef">default</span><span style="color:#f92672">:</span>
-                  <span style="color:#66d9ef">break</span><span style="color:#f92672">;</span>
-              <span style="color:#f92672">}</span>
-           <span style="color:#f92672">}</span>
-       <span style="color:#f92672">}</span><span style="color:#f92672">;</span>
-       btn1<span style="color:#f92672">.</span><span style="color:#a6e22e">setOnClickListener</span><span style="color:#f92672">(</span>listener<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
-       btn2<span style="color:#f92672">.</span><span style="color:#a6e22e">setOnClickListener</span><span style="color:#f92672">(</span>listener<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
-       btn3<span style="color:#f92672">.</span><span style="color:#a6e22e">setOnClickListener</span><span style="color:#f92672">(</span>listener<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
-    <span style="color:#f92672">}</span>
-<span style="color:#f92672">}</span>
-</code></pre></div><h3 id="注意">注意：</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SoundPoolDeme</span> <span class="kd">extends</span> <span class="n">Activity</span><span class="o">{</span>
+  <span class="n">Button</span> <span class="n">btn1</span><span class="o">,</span><span class="n">btn2</span><span class="o">,</span><span class="n">btn3</span><span class="o">;</span>
+  <span class="c1">//创建一个SoundPool对象
+</span><span class="c1"></span>    <span class="n">SoundPool</span> <span class="n">soundPool</span><span class="o">;</span>
+    <span class="c1">//定义一个HashMap用于存放音频流的ID
+</span><span class="c1"></span>    <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;</span><span class="n">musicId</span><span class="o">=</span><span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;</span><span class="o">(</span><span class="o">)</span><span class="o">;</span>
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+       <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">)</span><span class="o">;</span>
+       <span class="n">setContentView</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">layout</span><span class="o">.</span><span class="na">mian</span><span class="o">)</span><span class="o">;</span>
+       <span class="n">btn1</span><span class="o">=</span><span class="o">(</span><span class="n">Button</span><span class="o">)</span><span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">btn1</span><span class="o">)</span><span class="o">;</span>
+       <span class="n">btn2</span><span class="o">=</span><span class="o">(</span><span class="n">Button</span><span class="o">)</span><span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">btn2</span><span class="o">)</span><span class="o">;</span>
+       <span class="n">btn3</span><span class="o">=</span><span class="o">(</span><span class="n">Button</span><span class="o">)</span><span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">btn3</span><span class="o">)</span><span class="o">;</span>
+       <span class="c1">//初始化soundPool,设置可容纳12个音频流，音频流的质量为5，
+</span><span class="c1"></span>       <span class="n">soundPool</span><span class="o">=</span><span class="k">new</span> <span class="n">SoundPool</span><span class="o">(</span><span class="n">12</span><span class="o">,</span> <span class="n">0</span><span class="o">,</span><span class="n">5</span><span class="o">)</span><span class="o">;</span>
+       <span class="c1">//通过load方法加载指定音频流，并将返回的音频ID放入musicId中
+</span><span class="c1"></span>       <span class="n">musicId</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">1</span><span class="o">,</span> <span class="n">soundPool</span><span class="o">.</span><span class="na">load</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="n">R</span><span class="o">.</span><span class="na">raw</span><span class="o">.</span><span class="na">awooga</span><span class="o">,</span> <span class="n">1</span><span class="o">)</span><span class="o">)</span><span class="o">;</span>
+       <span class="n">musicId</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">2</span><span class="o">,</span> <span class="n">soundPool</span><span class="o">.</span><span class="na">load</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="n">R</span><span class="o">.</span><span class="na">raw</span><span class="o">.</span><span class="na">evillaugh</span><span class="o">,</span> <span class="n">1</span><span class="o">)</span><span class="o">)</span><span class="o">;</span>
+       <span class="n">musicId</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">3</span><span class="o">,</span> <span class="n">soundPool</span><span class="o">.</span><span class="na">load</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="n">R</span><span class="o">.</span><span class="na">raw</span><span class="o">.</span><span class="na">jackinthebox</span><span class="o">,</span> <span class="n">1</span><span class="o">)</span><span class="o">)</span><span class="o">;</span>
+       <span class="n">OnClickListener</span> <span class="n">listener</span><span class="o">=</span><span class="k">new</span> <span class="n">OnClickListener</span><span class="o">(</span><span class="o">)</span> <span class="o">{</span>       
+           <span class="nd">@Override</span>
+           <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">View</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+              <span class="c1">// TODO Auto-generated method stub
+</span><span class="c1"></span>              <span class="k">switch</span> <span class="o">(</span><span class="n">v</span><span class="o">.</span><span class="na">getId</span><span class="o">(</span><span class="o">)</span><span class="o">)</span> <span class="o">{</span>
+              <span class="k">case</span> <span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">btn1</span><span class="o">:</span>
+                  <span class="c1">//播放指定的音频流
+</span><span class="c1"></span>                  <span class="n">soundPool</span><span class="o">.</span><span class="na">play</span><span class="o">(</span><span class="n">musicId</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">1</span><span class="o">)</span><span class="o">,</span><span class="n">1</span><span class="o">,</span><span class="n">1</span><span class="o">,</span> <span class="n">0</span><span class="o">,</span> <span class="n">0</span><span class="o">,</span> <span class="n">1</span><span class="o">)</span><span class="o">;</span>
+                  <span class="k">break</span><span class="o">;</span>
+              <span class="k">case</span> <span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">btn2</span><span class="o">:</span>
+                  <span class="n">soundPool</span><span class="o">.</span><span class="na">play</span><span class="o">(</span><span class="n">musicId</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">2</span><span class="o">)</span><span class="o">,</span><span class="n">1</span><span class="o">,</span><span class="n">1</span><span class="o">,</span> <span class="n">0</span><span class="o">,</span> <span class="n">0</span><span class="o">,</span> <span class="n">1</span><span class="o">)</span><span class="o">;</span>
+                  <span class="k">break</span><span class="o">;</span>
+              <span class="k">case</span> <span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">btn3</span><span class="o">:</span>
+                  <span class="n">soundPool</span><span class="o">.</span><span class="na">play</span><span class="o">(</span><span class="n">musicId</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">3</span><span class="o">)</span><span class="o">,</span><span class="n">1</span><span class="o">,</span><span class="n">1</span><span class="o">,</span> <span class="n">0</span><span class="o">,</span> <span class="n">0</span><span class="o">,</span> <span class="n">1</span><span class="o">)</span><span class="o">;</span>
+                  <span class="k">break</span><span class="o">;</span>
+              <span class="k">default</span><span class="o">:</span>
+                  <span class="k">break</span><span class="o">;</span>
+              <span class="o">}</span>
+           <span class="o">}</span>
+       <span class="o">}</span><span class="o">;</span>
+       <span class="n">btn1</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="n">listener</span><span class="o">)</span><span class="o">;</span>
+       <span class="n">btn2</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="n">listener</span><span class="o">)</span><span class="o">;</span>
+       <span class="n">btn3</span><span class="o">.</span><span class="na">setOnClickListener</span><span class="o">(</span><span class="n">listener</span><span class="o">)</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="注意">注意：</h3>
 <p>SoundPool虽然可以一次性加载多个声音，但是由于内存的限制，因此应该避免使用SoundPool来播放歌曲或者做游戏背景音乐，只有那些短促、密集的声音才考虑使用SoundPool进行播放。</p>
 <p>虽然SoundPool比MediaPlayer的效果好，但也不是绝对不存在延迟问题，尤其在那些性能不太好的手机中，SoundPool的延迟问题会更加的严重。</p>
 
@@ -448,11 +512,11 @@
     
 <div class="post-copyright">
   <p class="copyright-item">
-    <span class="item-title">Author</span>
+    <span class="item-title">文章作者</span>
     <span class="item-content">Gordenyou</span>
   </p>
   <p class="copyright-item">
-    <span class="item-title">LastMod</span>
+    <span class="item-title">上次更新</span>
     <span class="item-content">
       2017-07-07
       
@@ -460,7 +524,7 @@
   </p>
   
   <p class="copyright-item">
-    <span class="item-title">License</span>
+    <span class="item-title">许可协议</span>
     <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
   </p>
 </div>
@@ -489,7 +553,7 @@
 
             </i>
             <span class="prev-text nav-default">重识Fragment</span>
-            <span class="prev-text nav-mobile">Prev</span>
+            <span class="prev-text nav-mobile">上一篇</span>
           </a>
         
       </nav>
