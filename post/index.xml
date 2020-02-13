@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Gorden is chasing.</title>
-    <link>http://localhost:1313/post/</link>
+    <link>https://gordenyou.github.io/post/</link>
     <description>Recent content in Posts on Gorden is chasing.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Thu, 20 Jul 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://localhost:1313/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://gordenyou.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>重识Fragment</title>
-      <link>http://localhost:1313/post/2017-07-20-%E5%86%8D%E8%AF%86fragment/</link>
+      <link>https://gordenyou.github.io/post/2017-07-20-%E5%86%8D%E8%AF%86fragment/</link>
       <pubDate>Thu, 20 Jul 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/post/2017-07-20-%E5%86%8D%E8%AF%86fragment/</guid>
+      <guid>https://gordenyou.github.io/post/2017-07-20-%E5%86%8D%E8%AF%86fragment/</guid>
       <description>以前就已经接触过好几次Fragment了，但是脑海中的Fragment妹子还是“犹抱琵琶半遮面”的样子，现在让我好好的看看她~</description>
     </item>
     
     <item>
       <title>SoundPool播放音效</title>
-      <link>http://localhost:1313/post/2017-07-07-soundpool%E6%92%AD%E6%94%BE%E9%9F%B3%E6%95%88/</link>
+      <link>https://gordenyou.github.io/post/2017-07-07-soundpool%E6%92%AD%E6%94%BE%E9%9F%B3%E6%95%88/</link>
       <pubDate>Fri, 07 Jul 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/post/2017-07-07-soundpool%E6%92%AD%E6%94%BE%E9%9F%B3%E6%95%88/</guid>
+      <guid>https://gordenyou.github.io/post/2017-07-07-soundpool%E6%92%AD%E6%94%BE%E9%9F%B3%E6%95%88/</guid>
       <description>实现Android App 的简单音效 如果应用程序经常播放密集、急促而又短暂的音效(如游戏音效)那么使用Media Player显得有些不太适合了。因</description>
     </item>
     
