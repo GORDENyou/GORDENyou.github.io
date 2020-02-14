@@ -23,8 +23,16 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="Gordenyou" />
-  <meta name="description" content="为什么需要git？ 还记得那年我们写的毕业论文吗？
-每次拿着刚打印好的毕业论爬上楼给你的导师修改，下了楼你的论文变成了草稿纸，而且这样的事情还不止一两次。" />
+  <meta name="description" content="[TOC]
+为什么需要git？ 还记得那年我们写的毕业论文吗？
+每次拿着刚打印好的毕业论爬上楼给你的导师修改，下了楼你的论文变成了草稿纸，而且这样的事情还不止一两次。
+更别说给你提需求的甲方或者老板了，各种方案和修改满天飞，说不定到了deadline， 老板一句：“好像还是第一版最好。”，这时候你就知道了版本控制的好了。
+方案一： 本地版本控制 这个版本解决的问题还是有限的，比如如何协同他们一起处理文件？
+方案二：SVN 这时候我们鼎鼎大名的 SVN 就出场了，SVN属于集中式版本管理，初步解决了协同开发。
+但是由于开发版本集中在一台计算机保管处理，这时候问题又来了：假如这台计算机挂了咋办？主角git要登场了！
+方案三：git 都已经8102年了，假如你还不知道git，那……你现在就跟着我了解下吧。
+先上图：
+为了解决上面所述的问题，git采用了分布式的版本控制管理，除了服务器有所有版本控制软件外，每台协同开发的计算机也拥有其版本备份。" />
 
   <meta name="keywords" content="Gordenyou, Android, jane" />
 
@@ -61,23 +69,47 @@
 
 
 <meta property="og:title" content="" />
-<meta property="og:description" content="为什么需要git？ 还记得那年我们写的毕业论文吗？
-每次拿着刚打印好的毕业论爬上楼给你的导师修改，下了楼你的论文变成了草稿纸，而且这样的事情还不止一两次。" />
+<meta property="og:description" content="[TOC]
+为什么需要git？ 还记得那年我们写的毕业论文吗？
+每次拿着刚打印好的毕业论爬上楼给你的导师修改，下了楼你的论文变成了草稿纸，而且这样的事情还不止一两次。
+更别说给你提需求的甲方或者老板了，各种方案和修改满天飞，说不定到了deadline， 老板一句：“好像还是第一版最好。”，这时候你就知道了版本控制的好了。
+方案一： 本地版本控制 这个版本解决的问题还是有限的，比如如何协同他们一起处理文件？
+方案二：SVN 这时候我们鼎鼎大名的 SVN 就出场了，SVN属于集中式版本管理，初步解决了协同开发。
+但是由于开发版本集中在一台计算机保管处理，这时候问题又来了：假如这台计算机挂了咋办？主角git要登场了！
+方案三：git 都已经8102年了，假如你还不知道git，那……你现在就跟着我了解下吧。
+先上图：
+为了解决上面所述的问题，git采用了分布式的版本控制管理，除了服务器有所有版本控制软件外，每台协同开发的计算机也拥有其版本备份。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://gordenyou.github.io/post/git/git/" />
 
 <meta itemprop="name" content="">
-<meta itemprop="description" content="为什么需要git？ 还记得那年我们写的毕业论文吗？
-每次拿着刚打印好的毕业论爬上楼给你的导师修改，下了楼你的论文变成了草稿纸，而且这样的事情还不止一两次。">
+<meta itemprop="description" content="[TOC]
+为什么需要git？ 还记得那年我们写的毕业论文吗？
+每次拿着刚打印好的毕业论爬上楼给你的导师修改，下了楼你的论文变成了草稿纸，而且这样的事情还不止一两次。
+更别说给你提需求的甲方或者老板了，各种方案和修改满天飞，说不定到了deadline， 老板一句：“好像还是第一版最好。”，这时候你就知道了版本控制的好了。
+方案一： 本地版本控制 这个版本解决的问题还是有限的，比如如何协同他们一起处理文件？
+方案二：SVN 这时候我们鼎鼎大名的 SVN 就出场了，SVN属于集中式版本管理，初步解决了协同开发。
+但是由于开发版本集中在一台计算机保管处理，这时候问题又来了：假如这台计算机挂了咋办？主角git要登场了！
+方案三：git 都已经8102年了，假如你还不知道git，那……你现在就跟着我了解下吧。
+先上图：
+为了解决上面所述的问题，git采用了分布式的版本控制管理，除了服务器有所有版本控制软件外，每台协同开发的计算机也拥有其版本备份。">
 
-<meta itemprop="wordCount" content="3">
+<meta itemprop="wordCount" content="18">
 
 
 
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content=""/>
-<meta name="twitter:description" content="为什么需要git？ 还记得那年我们写的毕业论文吗？
-每次拿着刚打印好的毕业论爬上楼给你的导师修改，下了楼你的论文变成了草稿纸，而且这样的事情还不止一两次。"/>
+<meta name="twitter:description" content="[TOC]
+为什么需要git？ 还记得那年我们写的毕业论文吗？
+每次拿着刚打印好的毕业论爬上楼给你的导师修改，下了楼你的论文变成了草稿纸，而且这样的事情还不止一两次。
+更别说给你提需求的甲方或者老板了，各种方案和修改满天飞，说不定到了deadline， 老板一句：“好像还是第一版最好。”，这时候你就知道了版本控制的好了。
+方案一： 本地版本控制 这个版本解决的问题还是有限的，比如如何协同他们一起处理文件？
+方案二：SVN 这时候我们鼎鼎大名的 SVN 就出场了，SVN属于集中式版本管理，初步解决了协同开发。
+但是由于开发版本集中在一台计算机保管处理，这时候问题又来了：假如这台计算机挂了咋办？主角git要登场了！
+方案三：git 都已经8102年了，假如你还不知道git，那……你现在就跟着我了解下吧。
+先上图：
+为了解决上面所述的问题，git采用了分布式的版本控制管理，除了服务器有所有版本控制软件外，每台协同开发的计算机也拥有其版本备份。"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -303,7 +335,11 @@
   <div class="post-toc-content">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#为什么需要git">为什么需要git？</a></li>
+    <li><a href="#为什么需要git">为什么需要git？</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
   </ul>
 </nav>
   </div>
@@ -311,10 +347,26 @@
 
     
     <div class="post-content">
-      <h2 id="为什么需要git">为什么需要git？</h2>
+      <p>[TOC]</p>
+<h2 id="为什么需要git">为什么需要git？</h2>
 <p>还记得那年我们写的毕业论文吗？</p>
 <p>每次拿着刚打印好的毕业论爬上楼给你的导师修改，下了楼你的论文变成了草稿纸，而且这样的事情还不止一两次。</p>
-<p><img src="..%5Cpublic%5Cpicture%5Cgit_paper.png" alt=""></p>
+<p><img src="..%5Casset%5Cgit_paper.png" alt=""></p>
+<!-- raw HTML omitted -->
+<p>更别说给你提需求的甲方或者老板了，各种方案和修改满天飞，说不定到了deadline， 老板一句：“好像还是第一版最好。”，这时候你就知道了版本控制的好了。</p>
+<h4 id="方案一-本地版本控制">方案一： 本地版本控制</h4>
+<p><img src="..%5Casset%5Cgit_version1.png" alt=""></p>
+<!-- raw HTML omitted -->
+<p>这个版本解决的问题还是有限的，比如如何协同他们一起处理文件？</p>
+<h4 id="方案二svn">方案二：SVN</h4>
+<p>这时候我们鼎鼎大名的 <code>SVN</code> 就出场了，<code>SVN</code>属于集中式版本管理，初步解决了协同开发。</p>
+<p><img src="..%5Casset%5Cgit_version2.png" alt=""></p>
+<p>但是由于开发版本集中在一台计算机保管处理，这时候问题又来了：假如这台计算机挂了咋办？主角<code>git</code>要登场了！</p>
+<h4 id="方案三git">方案三：git</h4>
+<p>都已经8102年了，假如你还不知道<code>git</code>，那……你现在就跟着我了解下吧。</p>
+<p>先上图：</p>
+<p><img src="..%5Casset%5Cgit_version2.png" alt=""></p>
+<p>为了解决上面所述的问题，<code>git</code>采用了分布式的版本控制管理，除了服务器有所有版本控制软件外，每台协同开发的计算机也拥有其版本备份。</p>
 
     </div>
 

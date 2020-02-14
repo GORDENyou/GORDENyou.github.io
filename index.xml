@@ -520,10 +520,26 @@
       
       <guid>https://gordenyou.github.io/post/git/git/</guid>
       
-        <description>&lt;h2 id=&#34;为什么需要git&#34;&gt;为什么需要git？&lt;/h2&gt;
+        <description>&lt;p&gt;[TOC]&lt;/p&gt;
+&lt;h2 id=&#34;为什么需要git&#34;&gt;为什么需要git？&lt;/h2&gt;
 &lt;p&gt;还记得那年我们写的毕业论文吗？&lt;/p&gt;
 &lt;p&gt;每次拿着刚打印好的毕业论爬上楼给你的导师修改，下了楼你的论文变成了草稿纸，而且这样的事情还不止一两次。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;..%5Cpublic%5Cpicture%5Cgit_paper.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;..%5Casset%5Cgit_paper.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;更别说给你提需求的甲方或者老板了，各种方案和修改满天飞，说不定到了deadline， 老板一句：“好像还是第一版最好。”，这时候你就知道了版本控制的好了。&lt;/p&gt;
+&lt;h4 id=&#34;方案一-本地版本控制&#34;&gt;方案一： 本地版本控制&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&#34;..%5Casset%5Cgit_version1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;这个版本解决的问题还是有限的，比如如何协同他们一起处理文件？&lt;/p&gt;
+&lt;h4 id=&#34;方案二svn&#34;&gt;方案二：SVN&lt;/h4&gt;
+&lt;p&gt;这时候我们鼎鼎大名的 &lt;code&gt;SVN&lt;/code&gt; 就出场了，&lt;code&gt;SVN&lt;/code&gt;属于集中式版本管理，初步解决了协同开发。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;..%5Casset%5Cgit_version2.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;但是由于开发版本集中在一台计算机保管处理，这时候问题又来了：假如这台计算机挂了咋办？主角&lt;code&gt;git&lt;/code&gt;要登场了！&lt;/p&gt;
+&lt;h4 id=&#34;方案三git&#34;&gt;方案三：git&lt;/h4&gt;
+&lt;p&gt;都已经8102年了，假如你还不知道&lt;code&gt;git&lt;/code&gt;，那……你现在就跟着我了解下吧。&lt;/p&gt;
+&lt;p&gt;先上图：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;..%5Casset%5Cgit_version2.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;为了解决上面所述的问题，&lt;code&gt;git&lt;/code&gt;采用了分布式的版本控制管理，除了服务器有所有版本控制软件外，每台协同开发的计算机也拥有其版本备份。&lt;/p&gt;
 </description>
       
     </item>
