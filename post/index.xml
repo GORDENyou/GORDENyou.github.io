@@ -29,5 +29,15 @@
       <description>实现Android App 的简单音效 如果应用程序经常播放密集、急促而又短暂的音效(如游戏音效)那么使用Media Player显得有些不太适合了。因</description>
     </item>
     
+    <item>
+      <title></title>
+      <link>https://gordenyou.github.io/post/git/git/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://gordenyou.github.io/post/git/git/</guid>
+      <description>为什么需要git？ 还记得那年我们写的毕业论文吗？
+每次拿着刚打印好的毕业论爬上楼给你的导师修改，下了楼你的论文变成了草稿纸，而且这样的事情还不止一两次。</description>
+    </item>
+    
   </channel>
 </rss>

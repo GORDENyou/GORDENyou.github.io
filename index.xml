@@ -513,5 +513,20 @@
       
     </item>
     
+    <item>
+      <title></title>
+      <link>https://gordenyou.github.io/post/git/git/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://gordenyou.github.io/post/git/git/</guid>
+      
+        <description>&lt;h2 id=&#34;为什么需要git&#34;&gt;为什么需要git？&lt;/h2&gt;
+&lt;p&gt;还记得那年我们写的毕业论文吗？&lt;/p&gt;
+&lt;p&gt;每次拿着刚打印好的毕业论爬上楼给你的导师修改，下了楼你的论文变成了草稿纸，而且这样的事情还不止一两次。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;..%5Cpublic%5Cpicture%5Cgit_paper.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+</description>
+      
+    </item>
+    
   </channel>
 </rss>
