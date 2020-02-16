@@ -12,7 +12,7 @@
     
     
     <item>
-      <title>Reflection</title>
+      <title>Java必备知识：反射</title>
       <link>https://gordenyou.github.io/post/java/reflection/</link>
       <pubDate>Fri, 16 Feb 2018 10:25:12 +0800</pubDate>
       
@@ -27,7 +27,7 @@
 &lt;h2 id=&#34;如何理解反射反射的机制&#34;&gt;如何理解反射？反射的机制？&lt;/h2&gt;
 &lt;p&gt;什么是反射？&lt;/p&gt;
 &lt;p&gt;反射就是&lt;strong&gt;将类的各个组成部分封装为其他对象&lt;/strong&gt;, 方便我们在&lt;strong&gt;程序运行时使用这些对象&lt;/strong&gt;。反射有利于程序的解耦，提高程序的可拓展性。不和你多BB，上图：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;index.assets%5Creflection_states.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;..%5Cindex.assets%5Creflection_states.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;如何使用反射&#34;&gt;如何使用反射？&lt;/h2&gt;
 &lt;h4 id=&#34;获取class对象的三种方式&#34;&gt;获取&lt;code&gt;Class&lt;/code&gt;对象的三种方式&lt;/h4&gt;
 &lt;p&gt;在上图所示的不同阶段，我们有不同的获取方式：&lt;/p&gt;
