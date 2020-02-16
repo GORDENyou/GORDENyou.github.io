@@ -6,10 +6,28 @@
     <description>Recent content in Posts on Gorden is chasing.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 20 Jul 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 16 Feb 2018 10:25:12 +0800</lastBuildDate>
     
 	<atom:link href="https://gordenyou.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Reflection</title>
+      <link>https://gordenyou.github.io/post/java/reflection/</link>
+      <pubDate>Fri, 16 Feb 2018 10:25:12 +0800</pubDate>
+      
+      <guid>https://gordenyou.github.io/post/java/reflection/</guid>
+      <description>反射在Java框架中的使用非常频繁，是我们进阶路上非常重要的一块垫脚石。</description>
+    </item>
+    
+    <item>
+      <title>必备Java基础：泛型</title>
+      <link>https://gordenyou.github.io/post/java/genericity/</link>
+      <pubDate>Thu, 15 Feb 2018 11:26:28 +0800</pubDate>
+      
+      <guid>https://gordenyou.github.io/post/java/genericity/</guid>
+      <description>泛型都不知道？源码怎么阅读？设计模式如何了解？当然，最主要的还是不开心。</description>
+    </item>
     
     <item>
       <title>重识Fragment</title>

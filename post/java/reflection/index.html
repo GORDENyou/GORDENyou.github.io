@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>技术之美 · Gorden is chasing.</title>
+  <title>Reflection - Gorden is chasing.</title>
   
 
 <meta name="renderer" content="webkit" />
@@ -23,7 +23,8 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="Gordenyou" />
-  <meta name="description" content="Gorden is chasing." />
+  <meta name="description" content="反射在Java框架中的使用非常频繁，是我们进阶路上非常重要的一块垫脚石。" />
+
   <meta name="keywords" content="Gordenyou, Android, jane" />
 
 
@@ -34,8 +35,8 @@
 <meta name="generator" content="Hugo 0.64.1" />
 
 
-<link rel="canonical" href="https://gordenyou.github.io/categories/%E6%8A%80%E6%9C%AF%E4%B9%8B%E7%BE%8E/" />
-<link href="/categories/%E6%8A%80%E6%9C%AF%E4%B9%8B%E7%BE%8E/index.xml" rel="alternate" type="application/rss+xml" title="Gorden is chasing." />
+<link rel="canonical" href="https://gordenyou.github.io/post/java/reflection/" />
+
 
 
 
@@ -58,15 +59,23 @@
 
 
 
-<meta property="og:title" content="技术之美" />
-<meta property="og:description" content="Gorden is chasing." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://gordenyou.github.io/categories/%E6%8A%80%E6%9C%AF%E4%B9%8B%E7%BE%8E/" />
-<meta property="og:updated_time" content="2018-02-16T10:25:12+08:00" />
-<meta itemprop="name" content="技术之美">
-<meta itemprop="description" content="Gorden is chasing."><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="技术之美"/>
-<meta name="twitter:description" content="Gorden is chasing."/>
+<meta property="og:title" content="Reflection" />
+<meta property="og:description" content="反射在Java框架中的使用非常频繁，是我们进阶路上非常重要的一块垫脚石。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://gordenyou.github.io/post/java/reflection/" />
+<meta property="article:published_time" content="2018-02-16T10:25:12+08:00" />
+<meta property="article:modified_time" content="2018-02-16T10:25:12+08:00" />
+<meta itemprop="name" content="Reflection">
+<meta itemprop="description" content="反射在Java框架中的使用非常频繁，是我们进阶路上非常重要的一块垫脚石。">
+<meta itemprop="datePublished" content="2018-02-16T10:25:12&#43;08:00" />
+<meta itemprop="dateModified" content="2018-02-16T10:25:12&#43;08:00" />
+<meta itemprop="wordCount" content="597">
+
+
+
+<meta itemprop="keywords" content="Java," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Reflection"/>
+<meta name="twitter:description" content="反射在Java框架中的使用非常频繁，是我们进阶路上非常重要的一块垫脚石。"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -265,88 +274,195 @@
     <main id="main" class="main bg-llight">
       <div class="content-wrapper">
         <div id="content" class="content container">
-          
-
-<section id="archive" class="archive">
-  
+          <article class="post bg-white">
     
-      <div class="archive-title category">
-        <h2 class="archive-name">分类： 技术之美</h2>
+    <header class="post-header">
+      <h1 class="post-title">Reflection</h1>
+      
+      <div class="post-meta">
+        <time datetime="2018-02-16" class="post-time">
+          2018-02-16
+        </time>
+        <div class="post-category">
+            <a href="https://gordenyou.github.io/categories/%E6%8A%80%E6%9C%AF%E4%B9%8B%E7%BE%8E/"> 技术之美 </a>
+            
+          </div>
+        
+
+        
+        
+
+        
+        
       </div>
+    </header>
+
     
-  
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#如何理解反射反射的机制">如何理解反射？反射的机制？</a></li>
+    <li><a href="#如何使用反射">如何使用反射？</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
 
-  
-    <div class="archive-post">
-      <time datetime="2018-02-16" class="archive-post-time">
-        2018-02-16
-      </time>
-      <span class="archive-post-title">
-        <a href="/post/java/reflection/" class="archive-post-link">
-          Reflection
-        </a>
-      </span>
+    
+    <div class="post-content">
+      <p>带着问题思考：</p>
+<ul>
+<li>如何理解反射？反射的机制？</li>
+<li>如何使用反射？</li>
+<li>反射如何提高一个<code>Java</code>框架的效率？</li>
+</ul>
+<h2 id="如何理解反射反射的机制">如何理解反射？反射的机制？</h2>
+<p>什么是反射？</p>
+<p>反射就是<strong>将类的各个组成部分封装为其他对象</strong>, 方便我们在<strong>程序运行时使用这些对象</strong>。反射有利于程序的解耦，提高程序的可拓展性。不和你多BB，上图：</p>
+<p><img src="index.assets%5Creflection_states.png" alt=""></p>
+<h2 id="如何使用反射">如何使用反射？</h2>
+<h4 id="获取class对象的三种方式">获取<code>Class</code>对象的三种方式</h4>
+<p>在上图所示的不同阶段，我们有不同的获取方式：</p>
+<ul>
+<li>源代码阶段：<code>Class.forName(&quot;全类名&quot;)  //将字节码加载进内存，返回Class对象</code></li>
+<li><code>Class</code>类对象阶段： <code>类名.class</code>，这是通过类名的属性 <code>class</code>获取的。</li>
+<li>运行时阶段：<code>对象.getClass()</code>，这个方法是在<code>Object</code>类中定义的。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">Class</span> <span class="n">cls1</span> <span class="o">=</span> <span class="n">Class</span><span class="o">.</span><span class="na">forName</span><span class="o">(</span><span class="s">&#34;完整类名&#34;</span><span class="o">)</span><span class="err">；</span>
+
+<span class="n">Class</span> <span class="n">cls2</span> <span class="o">=</span> <span class="n">String</span><span class="o">.</span><span class="na">class</span><span class="o">;</span>
+
+<span class="n">String</span> <span class="n">string</span> <span class="o">=</span> <span class="s">&#34;&#34;</span><span class="o">;</span>
+<span class="n">Class</span> <span class="n">cls3</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="na">getClass</span><span class="o">(</span><span class="o">)</span><span class="o">;</span>
+
+<span class="c1">//同一个字节码文件（*.class）在一次运行过程中，用以上三种方法获取的对象都是相同的。
+</span><span class="c1"></span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">cls1</span> <span class="o">=</span><span class="o">=</span> <span class="n">cls2</span><span class="o">)</span><span class="o">;</span> <span class="c1">//true
+</span><span class="c1"></span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">cls1</span> <span class="o">=</span><span class="o">=</span> <span class="n">cls3</span><span class="o">)</span><span class="o">;</span> <span class="c1">//true
+</span></code></pre></td></tr></table>
+</div>
+</div><h4 id="class文件中包含的信息">Class文件中包含的信息</h4>
+<ol>
+<li>类名</li>
+<li>成员变量</li>
+<li>构造方法</li>
+<li>成员方法</li>
+</ol>
+<p>具体的<code>API</code>就不列出来了，其中注意<code>API</code>中带<code>Declared</code>和不带的区别：</p>
+<ul>
+<li>不带：获取带 <code>public</code>修饰符</li>
+<li>带：   获取所有修饰符</li>
+</ul>
+<p>访问<code>privated</code>修饰符的变量或者方法时，需要忽略权限修饰符的安全检查，具体的代码操作：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-Java" data-lang="Java"><span class="n">Field</span> <span class="n">d</span> <span class="o">=</span> <span class="n">personClass</span><span class="o">.</span><span class="na">getDeclaredField</span><span class="o">(</span><span class="s">&#34;age&#34;</span><span class="o">)</span><span class="o">;</span>
+<span class="n">d</span><span class="o">.</span><span class="na">setAccessible</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span><span class="o">;</span> <span class="c1">//忽略安全检查，参数和方法同理。
+</span><span class="c1"></span>
+<span class="n">Object</span> <span class="n">person</span> <span class="o">=</span> <span class="n">personClass</span><span class="o">.</span><span class="na">newInstance</span><span class="o">(</span><span class="o">)</span><span class="o">;</span> <span class="c1">//class实例的空参构造方法
+</span></code></pre></td></tr></table>
+</div>
+</div>
     </div>
+
+    
+    
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">Gordenyou</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+      2018-02-16
+      
+    </span>
+  </p>
   
-    <div class="archive-post">
-      <time datetime="2018-02-15" class="archive-post-time">
-        2018-02-15
-      </time>
-      <span class="archive-post-title">
-        <a href="/post/java/genericity/" class="archive-post-link">
-          必备Java基础：泛型
-        </a>
-      </span>
-    </div>
-  
-    <div class="archive-post">
-      <time datetime="2017-07-20" class="archive-post-time">
-        2017-07-20
-      </time>
-      <span class="archive-post-title">
-        <a href="/post/2017-07-20-%E5%86%8D%E8%AF%86fragment/" class="archive-post-link">
-          重识Fragment
-        </a>
-      </span>
-    </div>
-  
-    <div class="archive-post">
-      <time datetime="2017-07-07" class="archive-post-time">
-        2017-07-07
-      </time>
-      <span class="archive-post-title">
-        <a href="/post/2017-07-07-soundpool%E6%92%AD%E6%94%BE%E9%9F%B3%E6%95%88/" class="archive-post-link">
-          SoundPool播放音效
-        </a>
-      </span>
-    </div>
-  
-</section>
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
 
 
+    
+    
 
+    <footer class="post-footer">
+      <div class="post-tags">
+          <a href="https://gordenyou.github.io/tags/java/">Java</a>
+          
+        </div>
 
+      
+      <nav class="post-nav">
+        
+        
+          <a class="next" href="/post/java/genericity/">
+            <span class="next-text nav-default">必备Java基础：泛型</span>
+            <span class="prev-text nav-mobile">下一篇</span>
+            
+            <i class="iconfont">
+              <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
 
+            </i>
+          </a>
+      </nav>
+    </footer>
+  </article>
 
   
   
+
+  
+  
+
   
 
   
   
 
   
-  
 
   
-  
 
   
+
+    
+
   
-
-
-
-
 
         </div>
       </div>
