@@ -25,7 +25,7 @@
 <meta name="author" content="Gordenyou" />
   <meta name="description" content="反射在Java框架中的使用非常频繁，是我们进阶路上非常重要的一块垫脚石。" />
 
-  <meta name="keywords" content="Gordenyou, Android, jane" />
+  <meta name="keywords" content="Gordenyou, Android, 架构" />
 
 
 
@@ -304,10 +304,19 @@
   <div class="post-toc-content">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#如何理解反射反射的机制">如何理解反射？反射的机制？</a></li>
-    <li><a href="#如何使用反射">如何使用反射？</a>
+    <li>
       <ul>
-        <li></li>
+        <li><a href="#如何理解反射反射的机制">如何理解反射？反射的机制？</a></li>
+        <li><a href="#如何使用反射">如何使用反射？</a>
+          <ul>
+            <li>
+              <ul>
+                <li><a href="#获取class对象的三种方式">获取Class对象的三种方式</a></li>
+                <li><a href="#class文件中包含的信息">Class文件中包含的信息</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>
@@ -326,7 +335,7 @@
 <h2 id="如何理解反射反射的机制">如何理解反射？反射的机制？</h2>
 <p>什么是反射？</p>
 <p>反射就是<strong>将类的各个组成部分封装为其他对象</strong>, 方便我们在<strong>程序运行时使用这些对象</strong>。反射有利于程序的解耦，提高程序的可拓展性。不和你多BB，上图：</p>
-<p><img src="..%5Cindex.assets%5Creflection_states.png" alt=""></p>
+<p><img src="/index.assets/reflection_states.png" alt=""></p>
 <h2 id="如何使用反射">如何使用反射？</h2>
 <h4 id="获取class对象的三种方式">获取<code>Class</code>对象的三种方式</h4>
 <p>在上图所示的不同阶段，我们有不同的获取方式：</p>
@@ -427,7 +436,7 @@
         
         
           <a class="next" href="/post/java/genericity/">
-            <span class="next-text nav-default">必备Java基础：泛型</span>
+            <span class="next-text nav-default">Java必备知识：泛型</span>
             <span class="prev-text nav-mobile">下一篇</span>
             
             <i class="iconfont">
@@ -458,7 +467,33 @@
 
   
 
+  <div class="disqus-comment">
+  <div class="disqus-button" id="load_disqus" onclick="load_disqus()">
+    显示 Disqus 评论
+  </div>
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = "https://gordenyou.github.io/post/java/reflection/";
+    };
+    function load_disqus() {
+      
+      
+      if (window.location.hostname === 'localhost') return;
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = 'Gorden';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+      $('#load_disqus').remove();
+    };
+  </script>
+  <noscript>Please enable JavaScript to view the
+    <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+  </noscript>
   
+  </div>
 
     
 
@@ -472,8 +507,9 @@
       <div class="icon-links">
   
   
-    <a href="mailto:your@email.com" rel="me noopener" class="iconfont"
-      title="email" >
+    <a href="http://1193688859@qq.com" rel="me noopener" class="iconfont"
+      title="email"  target="_blank"
+      >
       <svg class="icon" viewBox="0 0 1451 1024" version="1.1"
   xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
   width="36" height="36">

@@ -25,7 +25,7 @@
 <meta name="author" content="Gordenyou" />
   <meta name="description" content="实现Android App 的简单音效 如果应用程序经常播放密集、急促而又短暂的音效(如游戏音效)那么使用Media Player显得有些不太适合了。因" />
 
-  <meta name="keywords" content="Gordenyou, Android, jane" />
+  <meta name="keywords" content="Gordenyou, Android, 架构" />
 
 
 
@@ -306,8 +306,12 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#归纳起来使用soundpool播放声音的步骤如下">归纳起来，使用SoundPool播放声音的步骤如下：</a></li>
-        <li><a href="#注意">注意：</a></li>
+        <li>
+          <ul>
+            <li><a href="#归纳起来使用soundpool播放声音的步骤如下">归纳起来，使用SoundPool播放声音的步骤如下：</a></li>
+            <li><a href="#注意">注意：</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>
@@ -318,7 +322,7 @@
     
     <div class="post-content">
       <p>实现Android App 的简单音效</p>
-<!-- raw HTML omitted -->
+<!-- more --> 
 <p>如果应用程序经常播放密集、急促而又短暂的音效(如游戏音效)那么使用Media Player显得有些不太适合了。因为Media Player存在如下缺点：</p>
 <ol>
 <li>延时时间较长，且资源占用率高。</li>
@@ -575,7 +579,33 @@
 
   
 
+  <div class="disqus-comment">
+  <div class="disqus-button" id="load_disqus" onclick="load_disqus()">
+    显示 Disqus 评论
+  </div>
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = "https://gordenyou.github.io/post/2017-07-07-soundpool%E6%92%AD%E6%94%BE%E9%9F%B3%E6%95%88/";
+    };
+    function load_disqus() {
+      
+      
+      if (window.location.hostname === 'localhost') return;
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = 'Gorden';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+      $('#load_disqus').remove();
+    };
+  </script>
+  <noscript>Please enable JavaScript to view the
+    <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+  </noscript>
   
+  </div>
 
     
 
@@ -589,8 +619,9 @@
       <div class="icon-links">
   
   
-    <a href="mailto:your@email.com" rel="me noopener" class="iconfont"
-      title="email" >
+    <a href="http://1193688859@qq.com" rel="me noopener" class="iconfont"
+      title="email"  target="_blank"
+      >
       <svg class="icon" viewBox="0 0 1451 1024" version="1.1"
   xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
   width="36" height="36">

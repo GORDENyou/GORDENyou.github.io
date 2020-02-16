@@ -27,7 +27,7 @@
 &lt;h2 id=&#34;如何理解反射反射的机制&#34;&gt;如何理解反射？反射的机制？&lt;/h2&gt;
 &lt;p&gt;什么是反射？&lt;/p&gt;
 &lt;p&gt;反射就是&lt;strong&gt;将类的各个组成部分封装为其他对象&lt;/strong&gt;, 方便我们在&lt;strong&gt;程序运行时使用这些对象&lt;/strong&gt;。反射有利于程序的解耦，提高程序的可拓展性。不和你多BB，上图：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;..%5Cindex.assets%5Creflection_states.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://gordenyou.github.io/index.assets/reflection_states.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;如何使用反射&#34;&gt;如何使用反射？&lt;/h2&gt;
 &lt;h4 id=&#34;获取class对象的三种方式&#34;&gt;获取&lt;code&gt;Class&lt;/code&gt;对象的三种方式&lt;/h4&gt;
 &lt;p&gt;在上图所示的不同阶段，我们有不同的获取方式：&lt;/p&gt;
@@ -94,7 +94,7 @@
     </item>
     
     <item>
-      <title>必备Java基础：泛型</title>
+      <title>Java必备知识：泛型</title>
       <link>https://gordenyou.github.io/post/java/genericity/</link>
       <pubDate>Thu, 15 Feb 2018 11:26:28 +0800</pubDate>
       
@@ -511,7 +511,7 @@
       <guid>https://gordenyou.github.io/post/2017-07-07-soundpool%E6%92%AD%E6%94%BE%E9%9F%B3%E6%95%88/</guid>
       
         <description>&lt;p&gt;实现Android App 的简单音效&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;!-- more --&gt; 
 &lt;p&gt;如果应用程序经常播放密集、急促而又短暂的音效(如游戏音效)那么使用Media Player显得有些不太适合了。因为Media Player存在如下缺点：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;延时时间较长，且资源占用率高。&lt;/li&gt;

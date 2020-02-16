@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>必备Java基础：泛型 - Gorden is chasing.</title>
+  <title>Java必备知识：泛型 - Gorden is chasing.</title>
   
 
 <meta name="renderer" content="webkit" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Gordenyou" />
   <meta name="description" content="泛型都不知道？源码怎么阅读？设计模式如何了解？当然，最主要的还是不开心。" />
 
-  <meta name="keywords" content="Gordenyou, Android, jane" />
+  <meta name="keywords" content="Gordenyou, Android, 架构" />
 
 
 
@@ -59,13 +59,13 @@
 
 
 
-<meta property="og:title" content="必备Java基础：泛型" />
+<meta property="og:title" content="Java必备知识：泛型" />
 <meta property="og:description" content="泛型都不知道？源码怎么阅读？设计模式如何了解？当然，最主要的还是不开心。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://gordenyou.github.io/post/java/genericity/" />
 <meta property="article:published_time" content="2018-02-15T11:26:28+08:00" />
 <meta property="article:modified_time" content="2018-02-15T11:26:28+08:00" />
-<meta itemprop="name" content="必备Java基础：泛型">
+<meta itemprop="name" content="Java必备知识：泛型">
 <meta itemprop="description" content="泛型都不知道？源码怎么阅读？设计模式如何了解？当然，最主要的还是不开心。">
 <meta itemprop="datePublished" content="2018-02-15T11:26:28&#43;08:00" />
 <meta itemprop="dateModified" content="2018-02-15T11:26:28&#43;08:00" />
@@ -74,7 +74,7 @@
 
 
 <meta itemprop="keywords" content="Java," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="必备Java基础：泛型"/>
+<meta name="twitter:title" content="Java必备知识：泛型"/>
 <meta name="twitter:description" content="泛型都不知道？源码怎么阅读？设计模式如何了解？当然，最主要的还是不开心。"/>
 
 <!--[if lte IE 9]>
@@ -277,7 +277,7 @@
           <article class="post bg-white">
     
     <header class="post-header">
-      <h1 class="post-title">必备Java基础：泛型</h1>
+      <h1 class="post-title">Java必备知识：泛型</h1>
       
       <div class="post-meta">
         <time datetime="2018-02-15" class="post-time">
@@ -304,10 +304,14 @@
   <div class="post-toc-content">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#为什么使用泛型而不使用object">为什么使用泛型而不使用Object？</a></li>
-    <li><a href="#泛型中的e和t有什么区别">泛型中的E和T有什么区别？</a></li>
-    <li><a href="#如何使用泛型作为函数的返回类型">如何使用泛型作为函数的返回类型？</a></li>
-    <li><a href="#如何定义泛型上限和下限">如何定义泛型上限和下限？</a></li>
+    <li>
+      <ul>
+        <li><a href="#为什么使用泛型而不使用object">为什么使用泛型而不使用Object？</a></li>
+        <li><a href="#泛型中的e和t有什么区别">泛型中的E和T有什么区别？</a></li>
+        <li><a href="#如何使用泛型作为函数的返回类型">如何使用泛型作为函数的返回类型？</a></li>
+        <li><a href="#如何定义泛型上限和下限">如何定义泛型上限和下限？</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
   </div>
@@ -494,7 +498,33 @@
 
   
 
+  <div class="disqus-comment">
+  <div class="disqus-button" id="load_disqus" onclick="load_disqus()">
+    显示 Disqus 评论
+  </div>
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = "https://gordenyou.github.io/post/java/genericity/";
+    };
+    function load_disqus() {
+      
+      
+      if (window.location.hostname === 'localhost') return;
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = 'Gorden';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+      $('#load_disqus').remove();
+    };
+  </script>
+  <noscript>Please enable JavaScript to view the
+    <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+  </noscript>
   
+  </div>
 
     
 
@@ -508,8 +538,9 @@
       <div class="icon-links">
   
   
-    <a href="mailto:your@email.com" rel="me noopener" class="iconfont"
-      title="email" >
+    <a href="http://1193688859@qq.com" rel="me noopener" class="iconfont"
+      title="email"  target="_blank"
+      >
       <svg class="icon" viewBox="0 0 1451 1024" version="1.1"
   xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
   width="36" height="36">

@@ -25,7 +25,7 @@
 <meta name="author" content="Gordenyou" />
   <meta name="description" content="以前就已经接触过好几次Fragment了，但是脑海中的Fragment妹子还是“犹抱琵琶半遮面”的样子，现在让我好好的看看她~" />
 
-  <meta name="keywords" content="Gordenyou, Android, jane" />
+  <meta name="keywords" content="Gordenyou, Android, 架构" />
 
 
 
@@ -304,18 +304,22 @@
   <div class="post-toc-content">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#1fragment的生命周期">1.Fragment的生命周期</a></li>
-    <li><a href="#2静态使用fragment">2.静态使用Fragment</a></li>
-    <li><a href="#3动态使用fragment">3.动态使用Fragment</a></li>
-    <li><a href="#4fragment家族常用的api">4.Fragment家族常用的API</a>
+    <li>
       <ul>
-        <li><a href="#a获取fragmentmanage的方式">a、获取FragmentManage的方式：</a></li>
-        <li><a href="#b主要的操作都是fragmenttransaction的方法">b、主要的操作都是FragmentTransaction的方法</a></li>
+        <li><a href="#1fragment的生命周期">1.Fragment的生命周期</a></li>
+        <li><a href="#2静态使用fragment">2.静态使用Fragment</a></li>
+        <li><a href="#3动态使用fragment">3.动态使用Fragment</a></li>
+        <li><a href="#4fragment家族常用的api">4.Fragment家族常用的API</a>
+          <ul>
+            <li><a href="#a获取fragmentmanage的方式">a、获取FragmentManage的方式：</a></li>
+            <li><a href="#b主要的操作都是fragmenttransaction的方法">b、主要的操作都是FragmentTransaction的方法</a></li>
+          </ul>
+        </li>
+        <li><a href="#5管理fragment回退栈">5.管理Fragment回退栈</a></li>
+        <li><a href="#6fragment与activity的通信">6.Fragment与Activity的通信</a></li>
+        <li><a href="#7fragment与activity通信的最佳实践">7.Fragment与Activity通信的最佳实践</a></li>
       </ul>
     </li>
-    <li><a href="#5管理fragment回退栈">5.管理Fragment回退栈</a></li>
-    <li><a href="#6fragment与activity的通信">6.Fragment与Activity的通信</a></li>
-    <li><a href="#7fragment与activity通信的最佳实践">7.Fragment与Activity通信的最佳实践</a></li>
   </ul>
 </nav>
   </div>
@@ -662,7 +666,7 @@
 </svg>
 
             </i>
-            <span class="prev-text nav-default">必备Java基础：泛型</span>
+            <span class="prev-text nav-default">Java必备知识：泛型</span>
             <span class="prev-text nav-mobile">上一篇</span>
           </a>
         
@@ -698,7 +702,33 @@
 
   
 
+  <div class="disqus-comment">
+  <div class="disqus-button" id="load_disqus" onclick="load_disqus()">
+    显示 Disqus 评论
+  </div>
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = "https://gordenyou.github.io/post/2017-07-20-%E5%86%8D%E8%AF%86fragment/";
+    };
+    function load_disqus() {
+      
+      
+      if (window.location.hostname === 'localhost') return;
+
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      var disqus_shortname = 'Gorden';
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+
+      $('#load_disqus').remove();
+    };
+  </script>
+  <noscript>Please enable JavaScript to view the
+    <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+  </noscript>
   
+  </div>
 
     
 
@@ -712,8 +742,9 @@
       <div class="icon-links">
   
   
-    <a href="mailto:your@email.com" rel="me noopener" class="iconfont"
-      title="email" >
+    <a href="http://1193688859@qq.com" rel="me noopener" class="iconfont"
+      title="email"  target="_blank"
+      >
       <svg class="icon" viewBox="0 0 1451 1024" version="1.1"
   xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
   width="36" height="36">
