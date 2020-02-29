@@ -6,10 +6,19 @@
     <description>Recent content in Android on Gorden is chasing.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 20 Jul 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 29 Feb 2020 16:13:53 +0800</lastBuildDate>
     
 	<atom:link href="https://gordenyou.github.io/tags/android/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>UI绘制流程（上）布局是如何加载的？</title>
+      <link>https://gordenyou.github.io/post/android/view/ui%E7%BB%98%E5%88%B6%E6%B5%81%E7%A8%8B%E4%B8%8A/</link>
+      <pubDate>Sat, 29 Feb 2020 16:13:53 +0800</pubDate>
+      
+      <guid>https://gordenyou.github.io/post/android/view/ui%E7%BB%98%E5%88%B6%E6%B5%81%E7%A8%8B%E4%B8%8A/</guid>
+      <description>从setContentView(R.layout.activity_main);入手了解UI的绘制起始过程</description>
+    </item>
     
     <item>
       <title>重识Fragment</title>

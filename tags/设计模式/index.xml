@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>设计模式 on Gorden is chasing.</title>
+    <link>https://gordenyou.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</link>
+    <description>Recent content in 设计模式 on Gorden is chasing.</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 20 Feb 2018 09:53:51 +0800</lastBuildDate>
+    
+	<atom:link href="https://gordenyou.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>设计前言——代码设计是有原则的</title>
+      <link>https://gordenyou.github.io/post/designmode/%E8%AE%BE%E8%AE%A1%E5%89%8D%E8%A8%80/</link>
+      <pubDate>Tue, 20 Feb 2018 09:53:51 +0800</pubDate>
+      
+      <guid>https://gordenyou.github.io/post/designmode/%E8%AE%BE%E8%AE%A1%E5%89%8D%E8%A8%80/</guid>
+      <description>别问，问就是六大原则</description>
+    </item>
+    
+  </channel>
+</rss>

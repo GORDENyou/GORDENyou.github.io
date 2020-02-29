@@ -6,10 +6,186 @@
     <description>Recent content on Gorden is chasing.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 16 Feb 2018 10:25:12 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 29 Feb 2020 16:13:53 +0800</lastBuildDate>
     
         <atom:link href="https://gordenyou.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>UI绘制流程（上）布局是如何加载的？</title>
+      <link>https://gordenyou.github.io/post/android/view/ui%E7%BB%98%E5%88%B6%E6%B5%81%E7%A8%8B%E4%B8%8A/</link>
+      <pubDate>Sat, 29 Feb 2020 16:13:53 +0800</pubDate>
+      
+      <guid>https://gordenyou.github.io/post/android/view/ui%E7%BB%98%E5%88%B6%E6%B5%81%E7%A8%8B%E4%B8%8A/</guid>
+      
+        <description>&lt;p&gt;一行我们再也熟悉不过的代码，背后究竟是什么暗箱操作？&lt;/p&gt;
+&lt;p&gt;先上图：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;../picture/Activity_setContentView.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;这个是我们本篇的主要框架图，反映了我们Activity布局加载的框架。&lt;/p&gt;
+&lt;p&gt;现在我们从源码入手，进行探究。&lt;/p&gt;
+&lt;h2 id=&#34;activityjava&#34;&gt;Activity.java&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;setContentView&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nd&#34;&gt;@LayoutRes&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;layoutResID&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;getWindow&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;setContentView&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;layoutResID&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;这是我们的源头所在，我们已经很熟悉了。这里的&lt;code&gt;getWindow()&lt;/code&gt;得到的是抽象类&lt;code&gt;Window.class&lt;/code&gt;的唯一实现类&lt;code&gt;PhoneWindow&lt;/code&gt;的实例，并且最终调用了它的&lt;code&gt;setContentView()&lt;/code&gt;方法。&lt;/p&gt;
+&lt;h2 id=&#34;phonewindowclass&#34;&gt;PhoneWindow.class&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;nd&#34;&gt;@Override&lt;/span&gt;
+    &lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;setContentView&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;layoutResID&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mContentParent&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;null&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+            &lt;span class=&#34;n&#34;&gt;installDecor&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;//1.我们需要进去看看做了什么
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;else&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;!&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;hasFeature&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;FEATURE_CONTENT_TRANSITIONS&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+            &lt;span class=&#34;n&#34;&gt;mContentParent&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;removeAllViews&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+        &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+
+        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;hasFeature&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;FEATURE_CONTENT_TRANSITIONS&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+            &lt;span class=&#34;kd&#34;&gt;final&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Scene&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;newScene&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Scene&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;getSceneForLayout&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mContentParent&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;layoutResID&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt;
+                    &lt;span class=&#34;n&#34;&gt;getContext&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+            &lt;span class=&#34;n&#34;&gt;transitionTo&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;newScene&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+        &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;else&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+            &lt;span class=&#34;n&#34;&gt;mLayoutInflater&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;inflate&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;layoutResID&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mContentParent&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;//2.虽然不知道installDecor()处做了什么，但我们可以在这里推断出是为了给加载布局做出准备。
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+        &lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;
+    &lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;我们接下来仔细看看&lt;code&gt;installDecor();&lt;/code&gt;做了什么。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;kd&#34;&gt;private&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;installDecor&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;mForceDecorInstall&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;false&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mDecor&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;null&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;mDecor&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;generateDecor&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;//3
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        
+            &lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mContentParent&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;null&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;{&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;mContentParent&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;generateLayout&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mDecor&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;//4
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;
+           &lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;
+&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;在&lt;code&gt;installDecor()&lt;/code&gt;函数中，最重要的两件事就&lt;code&gt;generateDecor(-1)&lt;/code&gt;和&lt;code&gt;generateLayout(mDecor)&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;generateDecor(-1)&lt;/code&gt;返回了一个&lt;code&gt;DecorView&lt;/code&gt;实例。&lt;code&gt;DecorView&lt;/code&gt;继承自&lt;code&gt;FrameLayout&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;generateLayout(mDecor)&lt;/code&gt;则将我们刚才初始化的&lt;code&gt;DecorView&lt;/code&gt;进行默认的布局（&lt;code&gt;R.layout.screen_simple;&lt;/code&gt;）加载(&lt;code&gt;mDecor.onResourcesLoaded(mLayoutInflater, layoutResource);&lt;/code&gt;),并且创建了我们自定义布局的容器：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;n&#34;&gt;ViewGroup&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;contentParent&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ViewGroup&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;findViewById&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ID_ANDROID_CONTENT&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;这里的&lt;code&gt;contentParent&lt;/code&gt;便对应我们2处的&lt;code&gt;mContentParent&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;接下来我们的自定义布局便被加载到&lt;code&gt;mContentParent&lt;/code&gt;容器中。&lt;/p&gt;
+&lt;p&gt;到了这里便告一段落，接下来我们会看看我们的自定义布局在主线程中的处理过程。&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>设计前言——代码设计是有原则的</title>
+      <link>https://gordenyou.github.io/post/designmode/%E8%AE%BE%E8%AE%A1%E5%89%8D%E8%A8%80/</link>
+      <pubDate>Tue, 20 Feb 2018 09:53:51 +0800</pubDate>
+      
+      <guid>https://gordenyou.github.io/post/designmode/%E8%AE%BE%E8%AE%A1%E5%89%8D%E8%A8%80/</guid>
+      
+        <description>&lt;p&gt;做任何事情都是需要原则或者准则来规范的。作为一个程序猿，规范我们代码的优雅程度当然是钱……噢，不，当然是&lt;code&gt;设计模式六大原则&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;其实这六大原则看过很多次了，白纸黑子写的很清楚，每个字都认识，但是连成句子就好像和作者产生不了共鸣。当然不是作者水平不够，而是我们真的太菜，需要更多的场景来体会这些原则的“苦口婆心”。&lt;/p&gt;
+&lt;p&gt;一言以蔽之，这六大原则不是说你背下来就能理解的，而是在你每一次代码设计或者框架设计的时候，都要拿出来反刍，将其再咀嚼一番。&lt;/p&gt;
+&lt;h2 id=&#34;一个类不能太累原则单一职责原则&#34;&gt;一个类不能太累原则（单一职责原则）&lt;/h2&gt;
+&lt;p&gt;一个软件就像一个大的公司，当一个软件发展的很壮大，就像一个公司发展装大一样，由于软件或者公司的业务非常多，我们需要将工作细分，让每个人做他们擅长的事情，大家明细分工，工作互不影响，但是互相的配合又非常到位（高内聚，低耦合）。&lt;/p&gt;
+&lt;p&gt;这样的话，一个人的工作出现了变动，或者说一个模块的代码出现了变动，不会影响另一个人的工作或者模块。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Single Responsibility Principle&lt;/strong&gt;：就一个类而言，应该只有一个引起它变化的原因。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;这句话说起来是最简单的，但是生活中的生产实践起来并不是这么的简单，总会因为业务的变更而产生新的业务划分（类的划分），这需要架构人员强悍的能力和充实的经验。&lt;/p&gt;
+&lt;h2 id=&#34;电路板原则开闭原则&#34;&gt;电路板原则（开闭原则）&lt;/h2&gt;
+&lt;p&gt;目前没有想到一个更好的比喻。因为电路板修改起来是非常困难的，但是拓展性极高，可以类比开闭原则。&lt;/p&gt;
+&lt;p&gt;像我们简单工厂和抽象工厂就是一个很实际的例子，简单工厂中如果需要添加一个新的产品，需要修改原来的代码，而抽象工厂就解决了这个问题。抽象工厂通过&lt;code&gt;Java&lt;/code&gt;的反射机制来创建新的产品，而不需要修改一行代码。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Open-Colsed Principle&lt;/strong&gt;：一个软件实体应当对拓展开放，对修改关闭。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;其实在我们实际的生产环境中，通过&lt;strong&gt;抽象化&lt;/strong&gt;来实现开闭原则是关键所在。&lt;/p&gt;
+&lt;h2 id=&#34;父慈子孝原则里氏替换原则&#34;&gt;父慈子孝原则（里氏替换原则）&lt;/h2&gt;
+&lt;p&gt;这个比喻很不恰当，只是想让你印象深刻点（手动狗头）：儿子可以完美的代替父亲的工作，但是父亲并不可以代替儿子的工作，毕竟一代比一代强，儿子比父亲会的更多。&lt;/p&gt;
+&lt;p&gt;在软件中的意思就是：一个子类替换其基类，程序不会出现错误，反过来不会成立，所以一个软件最开始就是使用子类对象的话，就不能用其父类替换。毕竟子类可以拓展自己的成员和方法。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Liskov Substitution Principle&lt;/strong&gt;：所有引用基类（父类）的地方必须能够透明地使用其子类的对象。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;顺便一说，Liskov 是美国第一位计算机女博士，而且获得过图灵奖。&lt;/p&gt;
+&lt;h2 id=&#34;父慈子孝原则接口版依赖倒置原则&#34;&gt;父慈子孝原则接口版（依赖倒置原则）&lt;/h2&gt;
+&lt;p&gt;我们的业务应该面向接口编程，方便我们的拓展和更改。&lt;/p&gt;
+&lt;p&gt;引用网上的一句话：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在大多数情况下，&lt;strong&gt;开闭原则是目标，里氏代换原则是基础，依赖倒转原则是手段&lt;/strong&gt;这三个设计原则会同时出现，它们相辅相成，相互补充，目标一致，只是分析问题时所站角度不同而已。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Dependency Inversion Principle&lt;/strong&gt;：要针对接口而不是实现编程。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;一个接口不能太累原则接口隔离原则&#34;&gt;一个接口不能太累原则（接口隔离原则）&lt;/h2&gt;
+&lt;p&gt;哈哈，一个类的工作不能太累，接口亦然。&lt;/p&gt;
+&lt;p&gt;如果一个接口的工作太过繁重，实现接口对接的类当然也是苦不堪言，让专业的接口干它们专业的事情！这样对大家都好。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Interface Segregation Principle&lt;/strong&gt;: 使用多个专门的接口，而不使用单一的总接口，即客户端不应该依赖那些它们不需要的接口。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;也就是说，我们在设计中需要控制好接口的粒度，接口不能太小，以免太多的接口泛滥成灾，不利于维护；而且接口也不能太大，过大的接口非常臃肿，使用起来要抓狂。&lt;/p&gt;
+&lt;h2 id=&#34;距离产生美原则迪米特法则&#34;&gt;距离产生美原则（迪米特法则）&lt;/h2&gt;
+&lt;p&gt;人与人之间距离产生美，实体与实体之间也是如此，我们需要相对宽松的关系，共事起来才能流畅不受互相影响（低耦合）。&lt;/p&gt;
+&lt;p&gt;这里引用网上的一段话：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;迪米特法则要求我们在设计系统时，&lt;strong&gt;应该尽量减少对象之间的交互，如果两个对象之间不必彼此直接通信，那么这两个对象就不应当发生任何直接的相互作用，如果其中的一个对象需要调用另一个对象的某一个方法的话，可以通过第三者转发这个调用&lt;/strong&gt;。简言之，就是&lt;strong&gt;通过引入一个合理的第三者来降低现有对象之间的耦合度&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;在将迪米特法则运用到系统设计中时，要注意下面的几点：&lt;strong&gt;在类的划分上，应当尽量创建松耦合的类，类之间的耦合度越低，就越有利于复用，一个处在松耦合中的类一旦被修改，不会对关联的类造成太大波及&lt;/strong&gt;；&lt;strong&gt;在类的结构设计上，每一个类都应当尽量降低其成员变量和成员函数的访问权限&lt;/strong&gt;；&lt;strong&gt;在类的设计上，只要有可能，一个类型应当设计成不变类&lt;/strong&gt;；&lt;strong&gt;在对其他类的引用上，一个对象对其他对象的引用应当降到最低&lt;/strong&gt;。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Law of Demeter&lt;/strong&gt;：一个软件实体应当尽量可能少的与其他实体发生相互的作用。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;这原则个在Android中的MVP架构得到了实践。&lt;/p&gt;
+</description>
+      
+    </item>
     
     <item>
       <title>Java必备知识：反射</title>

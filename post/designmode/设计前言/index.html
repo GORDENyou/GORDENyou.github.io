@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Java必备知识：反射 - Gorden is chasing.</title>
+  <title>设计前言——代码设计是有原则的 - Gorden is chasing.</title>
   
 
 <meta name="renderer" content="webkit" />
@@ -23,7 +23,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="Gordenyou" />
-  <meta name="description" content="反射在Java框架中的使用非常频繁，是我们进阶路上非常重要的一块垫脚石。" />
+  <meta name="description" content="别问，问就是六大原则" />
 
   <meta name="keywords" content="Gordenyou, Android, 架构" />
 
@@ -35,7 +35,7 @@
 <meta name="generator" content="Hugo 0.64.1" />
 
 
-<link rel="canonical" href="https://gordenyou.github.io/post/java/reflection/" />
+<link rel="canonical" href="https://gordenyou.github.io/post/designmode/%E8%AE%BE%E8%AE%A1%E5%89%8D%E8%A8%80/" />
 
 
 
@@ -59,23 +59,23 @@
 
 
 
-<meta property="og:title" content="Java必备知识：反射" />
-<meta property="og:description" content="反射在Java框架中的使用非常频繁，是我们进阶路上非常重要的一块垫脚石。" />
+<meta property="og:title" content="设计前言——代码设计是有原则的" />
+<meta property="og:description" content="别问，问就是六大原则" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://gordenyou.github.io/post/java/reflection/" />
-<meta property="article:published_time" content="2018-02-16T10:25:12+08:00" />
-<meta property="article:modified_time" content="2018-02-16T10:25:12+08:00" />
-<meta itemprop="name" content="Java必备知识：反射">
-<meta itemprop="description" content="反射在Java框架中的使用非常频繁，是我们进阶路上非常重要的一块垫脚石。">
-<meta itemprop="datePublished" content="2018-02-16T10:25:12&#43;08:00" />
-<meta itemprop="dateModified" content="2018-02-16T10:25:12&#43;08:00" />
-<meta itemprop="wordCount" content="597">
+<meta property="og:url" content="https://gordenyou.github.io/post/designmode/%E8%AE%BE%E8%AE%A1%E5%89%8D%E8%A8%80/" />
+<meta property="article:published_time" content="2018-02-20T09:53:51+08:00" />
+<meta property="article:modified_time" content="2018-02-20T09:53:51+08:00" />
+<meta itemprop="name" content="设计前言——代码设计是有原则的">
+<meta itemprop="description" content="别问，问就是六大原则">
+<meta itemprop="datePublished" content="2018-02-20T09:53:51&#43;08:00" />
+<meta itemprop="dateModified" content="2018-02-20T09:53:51&#43;08:00" />
+<meta itemprop="wordCount" content="1807">
 
 
 
-<meta itemprop="keywords" content="Java," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Java必备知识：反射"/>
-<meta name="twitter:description" content="反射在Java框架中的使用非常频繁，是我们进阶路上非常重要的一块垫脚石。"/>
+<meta itemprop="keywords" content="Java,设计模式," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="设计前言——代码设计是有原则的"/>
+<meta name="twitter:description" content="别问，问就是六大原则"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -288,18 +288,18 @@ if (!doNotTrack) {
           <article class="post bg-white">
     
     <header class="post-header">
-      <h1 class="post-title">Java必备知识：反射</h1>
+      <h1 class="post-title">设计前言——代码设计是有原则的</h1>
       
       <div class="post-meta">
-        <time datetime="2018-02-16" class="post-time">
-          2018-02-16
+        <time datetime="2018-02-20" class="post-time">
+          2018-02-20
         </time>
         <div class="post-category">
             <a href="https://gordenyou.github.io/categories/%E6%8A%80%E6%9C%AF%E4%B9%8B%E7%BE%8E/"> 技术之美 </a>
             
           </div>
-        <span class="more-meta"> 约 597 字 </span>
-          <span class="more-meta"> 预计阅读 2 分钟 </span>
+        <span class="more-meta"> 约 1807 字 </span>
+          <span class="more-meta"> 预计阅读 4 分钟 </span>
 
         
         
@@ -318,17 +318,12 @@ if (!doNotTrack) {
   <ul>
     <li>
       <ul>
-        <li><a href="#如何理解反射反射的机制">如何理解反射？反射的机制？</a></li>
-        <li><a href="#如何使用反射">如何使用反射？</a>
-          <ul>
-            <li>
-              <ul>
-                <li><a href="#获取class对象的三种方式">获取Class对象的三种方式</a></li>
-                <li><a href="#class文件中包含的信息">Class文件中包含的信息</a></li>
-              </ul>
-            </li>
-          </ul>
-        </li>
+        <li><a href="#一个类不能太累原则单一职责原则">一个类不能太累原则（单一职责原则）</a></li>
+        <li><a href="#电路板原则开闭原则">电路板原则（开闭原则）</a></li>
+        <li><a href="#父慈子孝原则里氏替换原则">父慈子孝原则（里氏替换原则）</a></li>
+        <li><a href="#父慈子孝原则接口版依赖倒置原则">父慈子孝原则接口版（依赖倒置原则）</a></li>
+        <li><a href="#一个接口不能太累原则接口隔离原则">一个接口不能太累原则（接口隔离原则）</a></li>
+        <li><a href="#距离产生美原则迪米特法则">距离产生美原则（迪米特法则）</a></li>
       </ul>
     </li>
   </ul>
@@ -338,78 +333,58 @@ if (!doNotTrack) {
 
     
     <div class="post-content">
-      <p>带着问题思考：</p>
-<ul>
-<li>如何理解反射？反射的机制？</li>
-<li>如何使用反射？</li>
-<li>反射如何提高一个<code>Java</code>框架的效率？</li>
-</ul>
-<h2 id="如何理解反射反射的机制">如何理解反射？反射的机制？</h2>
-<p>什么是反射？</p>
-<p>反射就是<strong>将类的各个组成部分封装为其他对象</strong>, 方便我们在<strong>程序运行时使用这些对象</strong>。反射有利于程序的解耦，提高程序的可拓展性。不和你多BB，上图：</p>
-<p><img src="../index.assets/reflection_states.png" alt=""></p>
-<h2 id="如何使用反射">如何使用反射？</h2>
-<h4 id="获取class对象的三种方式">获取<code>Class</code>对象的三种方式</h4>
-<p>在上图所示的不同阶段，我们有不同的获取方式：</p>
-<ul>
-<li>源代码阶段：<code>Class.forName(&quot;全类名&quot;)  //将字节码加载进内存，返回Class对象</code></li>
-<li><code>Class</code>类对象阶段： <code>类名.class</code>，这是通过类名的属性 <code>class</code>获取的。</li>
-<li>运行时阶段：<code>对象.getClass()</code>，这个方法是在<code>Object</code>类中定义的。</li>
-</ul>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-java" data-lang="java"><span class="n">Class</span> <span class="n">cls1</span> <span class="o">=</span> <span class="n">Class</span><span class="o">.</span><span class="na">forName</span><span class="o">(</span><span class="s">&#34;完整类名&#34;</span><span class="o">)</span><span class="err">；</span>
+      <p>做任何事情都是需要原则或者准则来规范的。作为一个程序猿，规范我们代码的优雅程度当然是钱……噢，不，当然是<code>设计模式六大原则</code>。</p>
+<p>其实这六大原则看过很多次了，白纸黑子写的很清楚，每个字都认识，但是连成句子就好像和作者产生不了共鸣。当然不是作者水平不够，而是我们真的太菜，需要更多的场景来体会这些原则的“苦口婆心”。</p>
+<p>一言以蔽之，这六大原则不是说你背下来就能理解的，而是在你每一次代码设计或者框架设计的时候，都要拿出来反刍，将其再咀嚼一番。</p>
+<h2 id="一个类不能太累原则单一职责原则">一个类不能太累原则（单一职责原则）</h2>
+<p>一个软件就像一个大的公司，当一个软件发展的很壮大，就像一个公司发展装大一样，由于软件或者公司的业务非常多，我们需要将工作细分，让每个人做他们擅长的事情，大家明细分工，工作互不影响，但是互相的配合又非常到位（高内聚，低耦合）。</p>
+<p>这样的话，一个人的工作出现了变动，或者说一个模块的代码出现了变动，不会影响另一个人的工作或者模块。</p>
+<blockquote>
+<p><strong>Single Responsibility Principle</strong>：就一个类而言，应该只有一个引起它变化的原因。</p>
+</blockquote>
+<p>这句话说起来是最简单的，但是生活中的生产实践起来并不是这么的简单，总会因为业务的变更而产生新的业务划分（类的划分），这需要架构人员强悍的能力和充实的经验。</p>
+<h2 id="电路板原则开闭原则">电路板原则（开闭原则）</h2>
+<p>目前没有想到一个更好的比喻。因为电路板修改起来是非常困难的，但是拓展性极高，可以类比开闭原则。</p>
+<p>像我们简单工厂和抽象工厂就是一个很实际的例子，简单工厂中如果需要添加一个新的产品，需要修改原来的代码，而抽象工厂就解决了这个问题。抽象工厂通过<code>Java</code>的反射机制来创建新的产品，而不需要修改一行代码。</p>
+<blockquote>
+<p><strong>Open-Colsed Principle</strong>：一个软件实体应当对拓展开放，对修改关闭。</p>
+</blockquote>
+<p>其实在我们实际的生产环境中，通过<strong>抽象化</strong>来实现开闭原则是关键所在。</p>
+<h2 id="父慈子孝原则里氏替换原则">父慈子孝原则（里氏替换原则）</h2>
+<p>这个比喻很不恰当，只是想让你印象深刻点（手动狗头）：儿子可以完美的代替父亲的工作，但是父亲并不可以代替儿子的工作，毕竟一代比一代强，儿子比父亲会的更多。</p>
+<p>在软件中的意思就是：一个子类替换其基类，程序不会出现错误，反过来不会成立，所以一个软件最开始就是使用子类对象的话，就不能用其父类替换。毕竟子类可以拓展自己的成员和方法。</p>
+<blockquote>
+<p><strong>Liskov Substitution Principle</strong>：所有引用基类（父类）的地方必须能够透明地使用其子类的对象。</p>
+</blockquote>
+<p>顺便一说，Liskov 是美国第一位计算机女博士，而且获得过图灵奖。</p>
+<h2 id="父慈子孝原则接口版依赖倒置原则">父慈子孝原则接口版（依赖倒置原则）</h2>
+<p>我们的业务应该面向接口编程，方便我们的拓展和更改。</p>
+<p>引用网上的一句话：</p>
+<blockquote>
+<p>在大多数情况下，<strong>开闭原则是目标，里氏代换原则是基础，依赖倒转原则是手段</strong>这三个设计原则会同时出现，它们相辅相成，相互补充，目标一致，只是分析问题时所站角度不同而已。</p>
+</blockquote>
+<blockquote>
+<p><strong>Dependency Inversion Principle</strong>：要针对接口而不是实现编程。</p>
+</blockquote>
+<h2 id="一个接口不能太累原则接口隔离原则">一个接口不能太累原则（接口隔离原则）</h2>
+<p>哈哈，一个类的工作不能太累，接口亦然。</p>
+<p>如果一个接口的工作太过繁重，实现接口对接的类当然也是苦不堪言，让专业的接口干它们专业的事情！这样对大家都好。</p>
+<blockquote>
+<p><strong>Interface Segregation Principle</strong>: 使用多个专门的接口，而不使用单一的总接口，即客户端不应该依赖那些它们不需要的接口。</p>
+</blockquote>
+<p>也就是说，我们在设计中需要控制好接口的粒度，接口不能太小，以免太多的接口泛滥成灾，不利于维护；而且接口也不能太大，过大的接口非常臃肿，使用起来要抓狂。</p>
+<h2 id="距离产生美原则迪米特法则">距离产生美原则（迪米特法则）</h2>
+<p>人与人之间距离产生美，实体与实体之间也是如此，我们需要相对宽松的关系，共事起来才能流畅不受互相影响（低耦合）。</p>
+<p>这里引用网上的一段话：</p>
+<blockquote>
+<p>迪米特法则要求我们在设计系统时，<strong>应该尽量减少对象之间的交互，如果两个对象之间不必彼此直接通信，那么这两个对象就不应当发生任何直接的相互作用，如果其中的一个对象需要调用另一个对象的某一个方法的话，可以通过第三者转发这个调用</strong>。简言之，就是<strong>通过引入一个合理的第三者来降低现有对象之间的耦合度</strong>。</p>
+<p>在将迪米特法则运用到系统设计中时，要注意下面的几点：<strong>在类的划分上，应当尽量创建松耦合的类，类之间的耦合度越低，就越有利于复用，一个处在松耦合中的类一旦被修改，不会对关联的类造成太大波及</strong>；<strong>在类的结构设计上，每一个类都应当尽量降低其成员变量和成员函数的访问权限</strong>；<strong>在类的设计上，只要有可能，一个类型应当设计成不变类</strong>；<strong>在对其他类的引用上，一个对象对其他对象的引用应当降到最低</strong>。</p>
+</blockquote>
+<blockquote>
+<p><strong>Law of Demeter</strong>：一个软件实体应当尽量可能少的与其他实体发生相互的作用。</p>
+</blockquote>
+<p>这原则个在Android中的MVP架构得到了实践。</p>
 
-<span class="n">Class</span> <span class="n">cls2</span> <span class="o">=</span> <span class="n">String</span><span class="o">.</span><span class="na">class</span><span class="o">;</span>
-
-<span class="n">String</span> <span class="n">string</span> <span class="o">=</span> <span class="s">&#34;&#34;</span><span class="o">;</span>
-<span class="n">Class</span> <span class="n">cls3</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="na">getClass</span><span class="o">(</span><span class="o">)</span><span class="o">;</span>
-
-<span class="c1">//同一个字节码文件（*.class）在一次运行过程中，用以上三种方法获取的对象都是相同的。
-</span><span class="c1"></span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">cls1</span> <span class="o">=</span><span class="o">=</span> <span class="n">cls2</span><span class="o">)</span><span class="o">;</span> <span class="c1">//true
-</span><span class="c1"></span><span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">cls1</span> <span class="o">=</span><span class="o">=</span> <span class="n">cls3</span><span class="o">)</span><span class="o">;</span> <span class="c1">//true
-</span></code></pre></td></tr></table>
-</div>
-</div><h4 id="class文件中包含的信息">Class文件中包含的信息</h4>
-<ol>
-<li>类名</li>
-<li>成员变量</li>
-<li>构造方法</li>
-<li>成员方法</li>
-</ol>
-<p>具体的<code>API</code>就不列出来了，其中注意<code>API</code>中带<code>Declared</code>和不带的区别：</p>
-<ul>
-<li>不带：获取带 <code>public</code>修饰符</li>
-<li>带：   获取所有修饰符</li>
-</ul>
-<p>访问<code>privated</code>修饰符的变量或者方法时，需要忽略权限修饰符的安全检查，具体的代码操作：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-Java" data-lang="Java"><span class="n">Field</span> <span class="n">d</span> <span class="o">=</span> <span class="n">personClass</span><span class="o">.</span><span class="na">getDeclaredField</span><span class="o">(</span><span class="s">&#34;age&#34;</span><span class="o">)</span><span class="o">;</span>
-<span class="n">d</span><span class="o">.</span><span class="na">setAccessible</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span><span class="o">;</span> <span class="c1">//忽略安全检查，参数和方法同理。
-</span><span class="c1"></span>
-<span class="n">Object</span> <span class="n">person</span> <span class="o">=</span> <span class="n">personClass</span><span class="o">.</span><span class="na">newInstance</span><span class="o">(</span><span class="o">)</span><span class="o">;</span> <span class="c1">//class实例的空参构造方法
-</span></code></pre></td></tr></table>
-</div>
-</div>
     </div>
 
     
@@ -422,7 +397,7 @@ if (!doNotTrack) {
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
     <span class="item-content">
-      2018-02-16
+      2018-02-20
       
     </span>
   </p>
@@ -440,13 +415,14 @@ if (!doNotTrack) {
     <footer class="post-footer">
       <div class="post-tags">
           <a href="https://gordenyou.github.io/tags/java/">Java</a>
+          <a href="https://gordenyou.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
           
         </div>
 
       
       <nav class="post-nav">
         
-          <a class="prev" href="/post/designmode/%E8%AE%BE%E8%AE%A1%E5%89%8D%E8%A8%80/">
+          <a class="prev" href="/post/android/view/ui%E7%BB%98%E5%88%B6%E6%B5%81%E7%A8%8B%E4%B8%8A/">
             
             <i class="iconfont">
               <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
@@ -456,12 +432,12 @@ if (!doNotTrack) {
 </svg>
 
             </i>
-            <span class="prev-text nav-default">设计前言——代码设计是有原则的</span>
+            <span class="prev-text nav-default">UI绘制流程（上）布局是如何加载的？</span>
             <span class="prev-text nav-mobile">上一篇</span>
           </a>
         
-          <a class="next" href="/post/java/genericity/">
-            <span class="next-text nav-default">Java必备知识：泛型</span>
+          <a class="next" href="/post/java/reflection/">
+            <span class="next-text nav-default">Java必备知识：反射</span>
             <span class="prev-text nav-mobile">下一篇</span>
             
             <i class="iconfont">
@@ -499,7 +475,7 @@ if (!doNotTrack) {
   <div id="disqus_thread"></div>
   <script type="text/javascript">
     var disqus_config = function () {
-      this.page.url = "https://gordenyou.github.io/post/java/reflection/";
+      this.page.url = "https://gordenyou.github.io/post/designmode/%E8%AE%BE%E8%AE%A1%E5%89%8D%E8%A8%80/";
     };
     function load_disqus() {
       
