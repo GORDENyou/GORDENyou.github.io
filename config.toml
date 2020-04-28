@@ -1,0 +1,119 @@
+# This is a simple configuration.
+# If you want to see the full configuration, please check `full-config.toml` .
+# And see https://gohugo.io/getting-started/configuration/ .
+
+baseURL = "https://gordenyou.github.io/"
+title = "Gorden is chasing."
+enableRobotsTXT = true
+enableEmoji = true
+theme = "jane"
+
+hasCJKLanguage = true     # has chinese/japanese/korean ? # 自动检测是否包含 中文\日文\韩文
+paginate = 6              # Number of articles displayed on the homepage  # 首页每页显示的文章数
+rssLimit = 20             # Limit Entry Count to Rss file # 限制 Rss 文章输出数量
+disqusShortname = "Gorden"      # disqus_shortname
+googleAnalytics = "UA-158592169-1"      # UA-XXXXXXXX-X
+copyright = ""            # default: author.name ↓        # 默认为下面配置的author.name ↓
+enableGitInfo = false
+
+# language support # en / zh-cn / other... translations present in i18n/
+defaultContentLanguage = "zh-cn"           # Default language to use
+[languages.zh-cn]
+  languageCode = "zh-cn"
+  
+PygmentsCodeFences = true # Enable syntax highlighting with GitHub flavoured code fences
+PygmentsUseClasses = true # Use CSS classes to format highlighted code
+PygmentsCodefencesGuessSyntax = true
+PygmentsOptions = "linenos=table"
+
+# 内置 HTML 需启用
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  
+
+    [markup.tableOfContents]
+	  endLevel = 6
+      startLevel = 1
+
+[author]                  # essential                     # 必需
+  name = "Gordenyou"
+
+[sitemap]                 # essential                     # 必需
+  changefreq = "weekly"
+  priority = 0.5
+  filename = "sitemap.xml"
+
+[[menu.main]]             # config your menu              # 配置目录
+  name = "主页🐷"
+  weight = 10
+  identifier = "home"
+  url = "/"
+[[menu.main]]
+  name = "历程🌵"
+  weight = 20
+  identifier = "archives"
+  url = "/post/"
+[[menu.main]]
+  name = "标签🔖"
+  weight = 30
+  identifier = "tags"
+  url = "/tags/"
+[[menu.main]]
+  name = "分类🎂"
+  weight = 40
+  identifier = "categories"
+  url = "/categories/"
+# [[menu.main]]
+#   name = "external-link"
+#   weight = 50
+#   url = "https://gohugo.io"
+
+
+[params]
+  since = "2017"            # Site creation time          # 站点建立时间
+  homeFullContent = false   # if false, show post summaries on home page. Othewise show full content.
+  rssFullContent = true     # if false, Rss feed instead of the summary
+
+  # site info (optional)                                  # 站点信息（可选，不需要的可以直接注释掉）
+  logoTitle = "🐱‍🏍Gordenyou"        # default: the title value    # 默认值: 上面设置的title值
+  keywords = ["Gordenyou", "Android","架构"]
+  description = "Gorden is chasing."
+
+  # The date format to use; for a list of valid formats, see https://gohugo.io/functions/format/
+  dateFormatToUse = "2006-01-02"
+
+  moreMeta = true
+
+  # 一些全局开关，你也可以在每一篇内容的 front matter 中针对单篇内容关闭或开启某些功能，在 archetypes/default.md 查看更多信息。
+  # Some global options, you can also close or open something in front matter for a single post, see more information from `archetypes/default.md`.
+  toc = true                                                                            # 是否开启目录
+  photoswipe = true         # see https://github.com/dimsemenov/PhotoSwipe            # 是否启用PhotoSwipe（图片可点击）
+  contentCopyright = '<a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a>'
+
+  # Link custom CSS and JS assets
+  #   (relative to /static/css and /static/js respectively)
+  customCSS = []            # if ['custom.css'], load '/static/css/custom.css' file
+  customJS = []             # if ['custom.js'], load '/static/js/custom.js' file
+
+  [params.social]                                         # 社交链接
+    a-email = "http://1193688859@qq.com"
+    # b-stack-overflow = "http://localhost:1313"
+    # c-twitter = "http://localhost:1313"
+    # d-facebook = "http://localhost:1313"
+    # e-linkedin = "http://localhost:1313"
+    # f-google = "http://localhost:1313"
+    # g-github = "http://localhost:1313"
+    # h-weibo = "http://localhost:1313"
+    # i-zhihu = "http://localhost:1313"
+    # j-douban = "http://localhost:1313"
+    # k-pocket = "http://localhost:1313"
+    # l-tumblr = "http://localhost:1313"
+    # m-instagram = "http://localhost:1313"
+    # n-gitlab = "http://localhost:1313"
+    # o-goodreads = "http://localhost:1313"
+    # p-coding = "http://localhost:1313"
+    # q-bilibili = "http://localhost:1313"
+    # r-codeforces = "http://localhost:1313"
+    # s-mastodon = "http://localhost:1313"
